@@ -1,22 +1,25 @@
+/* Applies to all elements*/
 *, *::before, *::after{
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
 }
 
+/*Remove padding and margin so that the background fills the entire screen*/
 body{
     padding:0;
     margin: 0;
     background:linear-gradient(to right, #00AAFF, #00FF6C); 
 }
 
+/* */
 .calculator-grid{
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    min-height: 100vh;
-    grid-template-columns: repeat(4,100px);
-    grid-template-rows: minmax(120px, auto) repeat(5,100px);
+    display: grid; /*Turn the container into rows and col grid*/
+    justify-content: center; /*Aligns item at the center of the container on the x axis*/
+    align-content: center; /* Pack items around the center on the y axis*/
+    min-height: 100vh; /* initial height will take 100% of the viewport height, but will grow more if needed */
+    grid-template-columns: repeat(4,100px);/*4 cols*/
+    grid-template-rows: minmax(120px, auto) repeat(5,100px);/*The output can expand hence why the max can go to auto, 5 rows*/
 }
 
 .calculator-grid > button{
@@ -31,20 +34,21 @@ body{
     background-color: rgba(255, 255, 255, .9);
 }
 
+/*Makes column for AC and = be 2 columns*/
 .span-two{
     grid-column:span 2;
 }
 
 .output{
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /*This makes the output fill the entire width of the top row */
     background-color: rgba(0, 0, 0, .75);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    flex-direction: column;
+    display: flex; /**/
+    align-items: flex-end; /*Moves items to the right of the container*/
+    justify-content: space-around; /*Pushes element closer to each other while pushing them away from the top and bottom*/
+    flex-direction: column; /*Align the items vertically*/
     padding: 10px;
-    word-wrap: break-word;
-    word-break: break-all;
+    word-wrap: break-word; /*Allow long words to be able to break and wrap onto the next line*/
+    word-break: break-all; /*Breaks the word at characters rather than normal word rules or hypens*/
 }
 
 .output .previous-operand{
